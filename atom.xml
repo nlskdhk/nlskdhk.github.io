@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-23T07:48:51.339Z</updated>
+  <updated>2021-12-31T09:19:32.518Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>spring相关jar包作用</title>
+    <link href="http://example.com/2021/12/23/spring%E7%9B%B8%E5%85%B3jar%E5%8C%85%E4%BD%9C%E7%94%A8/"/>
+    <id>http://example.com/2021/12/23/spring%E7%9B%B8%E5%85%B3jar%E5%8C%85%E4%BD%9C%E7%94%A8/</id>
+    <published>2021-12-23T08:13:41.000Z</published>
+    <updated>2021-12-31T09:19:32.518Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>(核心)beans : SpringIoC(依赖注入)的基础实现</p></li><li><p>(核心)context : Spring提供在基础IoC功能上的扩展服务，此外还提供许多企业级服务的支持，如邮件服务、任务调度、JNDI定位、EJB集成、远程访问、缓存以及各种视图层框架的封装等</p></li><li><p>(核心)core : Spring3.0的核心工具包</p></li><li><p>(核心)expression : Spring表达式语言</p></li><li><p>aop:Spring面向切面编程，提供AOP实现</p></li><li><p>spring-boot-starter-data-jpa：JPA 类似与Mybatis的持久化规范 </p></li></ul><ul><li><p>druid：数据库连接池</p></li><li><p>swagger2的jar包：springfox-swagger2和springfox-swagger-ui</p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;(核心)beans : SpringIoC(依赖注入)的基础实现&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;(核心)context : Spring提供在基础IoC功能上的扩展服务，此外还提供许多企业级服务的支持，如邮件服务、任务调度、JNDI定位、EJB集成、远</summary>
+      
+    
+    
+    
+    <category term="杂学" scheme="http://example.com/categories/%E6%9D%82%E5%AD%A6/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>你好</title>
