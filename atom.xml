@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-12-31T09:19:32.518Z</updated>
+  <updated>2022-03-21T09:00:01.448Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>码农翻身</title>
+    <link href="http://example.com/2022/02/11/%E7%A0%81%E5%86%9C%E7%BF%BB%E8%BA%AB/"/>
+    <id>http://example.com/2022/02/11/%E7%A0%81%E5%86%9C%E7%BF%BB%E8%BA%AB/</id>
+    <published>2022-02-11T06:44:14.000Z</published>
+    <updated>2022-03-21T09:00:01.448Z</updated>
+    
+    <content type="html"><![CDATA[        <h1 id="第一章-计算机的世界你不懂"   >          <a href="#第一章-计算机的世界你不懂" class="heading-link"><i class="fas fa-link"></i></a><a href="#第一章-计算机的世界你不懂" class="headerlink" title="第一章  计算机的世界你不懂"></a>第一章  计算机的世界你不懂</h1>              <h2 id="1-死锁"   >          <a href="#1-死锁" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-死锁" class="headerlink" title="1.死锁"></a>1.死锁</h2>      <p>首先说一下线程  ，每个线程只能在CPU里面运行一段时间，时间一到， 就要进入就绪状态</p><p>线程1需要执行 A&gt;&gt;B </p><p>线程2需要执行B&gt;&gt;A</p><p>资源A 资源B 都有锁</p><p>死锁产生情况：线程1获取A的锁后，线程中断，此时线程2开始运行，获取了B的锁 ，由于A的锁还没有释放，此时死锁就产生了</p><p>如何解决：给资源设置”大小“，所谓的资源大小就是把这个资源变成一个数来比较，例如字符串的 hashcode就可以比较，所有线程必须先获取资源大的锁，这样就不会出现死锁状况了。</p>        <h2 id="2-三次握手"   >          <a href="#2-三次握手" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-三次握手" class="headerlink" title="2.三次握手"></a>2.三次握手</h2>      <p>A与B建立连接</p><p>第一次握手：A 发消息给 B ，B收到消息，B确定了A的发信息能力 和自己（B）的收信息的能力同时通过第二次握手传递给A。</p><p>第二次握手：B给A发回复消息，A收到信息，A确定了自己（A）的收信能力和B的发信息能力 所以A就知道了自己的发和收都没问题，但B还不知道自己的发信息能力如何，所以就还要进行一次握手确认。</p><p>第三次握手：A给B发信息，B确定了自己的发信息能力，<strong>连接建立</strong>。</p>        <h2 id="3-硬件知识（了解）"   >          <a href="#3-硬件知识（了解）" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-硬件知识（了解）" class="headerlink" title="3.硬件知识（了解）"></a>3.硬件知识（了解）</h2>              <h1 id="第二章-Java帝国"   >          <a href="#第二章-Java帝国" class="heading-link"><i class="fas fa-link"></i></a><a href="#第二章-Java帝国" class="headerlink" title="第二章 Java帝国"></a>第二章 Java帝国</h1>              <h2 id="1-双亲委派"   >          <a href="#1-双亲委派" class="heading-link"><i class="fas fa-link"></i></a><a href="#1-双亲委派" class="headerlink" title="1.双亲委派"></a>1.双亲委派</h2>      <p>Bootstrap Classloader ,Extension Classloader,App Classloader , 关系（权力）由大到小</p><p>自己的理解：由App获取到类 然后 询问 Bootstrap 能不能加载此类 ，然后在询问 Extension 能不能加载此类 ，由文件验证器验证文件 ，然后由负责加载的Classloader把类加载到 虚拟机里面 </p><p><strong>（有待补充）</strong></p>        <h2 id="2-JDBC获取连接"   >          <a href="#2-JDBC获取连接" class="heading-link"><i class="fas fa-link"></i></a><a href="#2-JDBC获取连接" class="headerlink" title="2.JDBC获取连接"></a>2.JDBC获取连接</h2>      <p>一般我们通过<strong>DriverManager</strong>获取到数据库的连接，调用<strong>getConnection</strong>方法，传入相应参数 通过遍历<strong>registeredDrivers</strong>数组来获取到相应数据库连接。</p><p>而<strong>registeredDrivers</strong>数组是通过 Spring对数据库提供的jar包里面的Driver类进行装载，从而实现static代码块调用<strong>DriverManager</strong>的注册功能（<strong>registerDriver</strong>()方法），使其注册到<strong>registeredDrivers</strong>数组里面。</p><figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Connection con = DriverManager.getConnection(url,user,password);</span><br><span class="line">Statement stmt = con.createStatement();</span><br><span class="line">ResultSet result = statement.executeQuery(<span class="string">&quot;select ...&quot;</span>);</span><br><span class="line"><span class="keyword">while</span>(result.next)&#123;</span><br><span class="line">result.getInt(<span class="string">&quot;id&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></div></figure>        <h2 id="3-消息队列"   >          <a href="#3-消息队列" class="heading-link"><i class="fas fa-link"></i></a><a href="#3-消息队列" class="headerlink" title="3.消息队列"></a>3.消息队列</h2>      <p>消息队列规范 ，Java Message Service ( <strong>JMS</strong> ) </p><figure class="highlight java"><div class="table-container"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">／／从配置中找到ConnectionFactory， Destination(Queue)</span><br><span class="line">Context ctx = <span class="keyword">new</span> InitialContext(poperties);</span><br><span class="line">QueueConnectionFactory factory = (QueueConnectionFactory) ctx. </span><br><span class="line">lookup （<span class="string">&quot;＜orderConnFactory＞&quot;</span>）；</span><br><span class="line"></span><br><span class="line">Queue orderQueue = (Queue) ctx.lookup(<span class="string">&quot;orderQueue&quot;</span>); </span><br><span class="line">Queue deliverQueue = (Queue) ctx.lookup(<span class="string">&quot;deliveQueue&quot;</span>）；</span><br><span class="line"></span><br><span class="line">／／创 Connection Session</span><br><span class="line">Connection conn = factory. createConnection (); </span><br><span class="line">QueueSession session = </span><br><span class="line">conn.createQueueSession(<span class="keyword">false</span>,Session.AUTO_ACKNOWLEDGE);</span><br><span class="line">                                        </span><br><span class="line">／／创建消息生产者并发送消息</span><br><span class="line">MessageProducer producer = session.createProducer(orderQueue);</span><br><span class="line">TextMessage msg = session.createTextMessage (<span class="string">&quot;hello word&quot;</span>） ; </span><br><span class="line">producer.send （msg);</span><br><span class="line">                                        </span><br><span class="line">／／创建消息消费者并接收消息，注意使用的是另一个Queue</span><br><span class="line">MessageConsumer consumer = session.createConsumer（ deliverQeue);</span><br><span class="line">TextMessage deliver Msg = (TextMessage) consumer.receive(); </span><br><span class="line">String txt = deliverMsg.getText();</span><br></pre></td></tr></table></div></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">
+        &lt;h1 id=&quot;第一章-计算机的世界你不懂&quot;   &gt;
+          &lt;a href=&quot;#第一章-计算机的世界你不懂&quot; class=&quot;heading-link&quot;&gt;&lt;i class=&quot;fas fa-link&quot;&gt;&lt;/i&gt;&lt;/a&gt;&lt;a href=&quot;#第一章-计算机</summary>
+      
+    
+    
+    
+    <category term="读书笔记" scheme="http://example.com/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>spring相关jar包作用</title>
